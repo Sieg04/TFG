@@ -67,7 +67,8 @@
               "buildTarget": "progrex-angular-shell:build:production"
             },
             "development": {
-              "buildTarget": "progrex-angular-shell:build:development"
+              "buildTarget": "progrex-angular-shell:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
