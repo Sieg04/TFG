@@ -1,0 +1,9 @@
+fastapi
+sqlalchemy
+uvicorn[standard]
+pyodbc
+pydantic<2.0.0
+requests
+pandas
+six
+urllib3<2.0.0,>=1.26.0
