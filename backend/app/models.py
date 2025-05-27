@@ -1,9 +1,10 @@
 # backend/app/models.py
 from sqlalchemy import (
-    Column, Integer, String, Float, Date, ForeignKey, UniqueConstraint
+    Column, Integer, String, Float, Date, ForeignKey, UniqueConstraint, Boolean, Text, DateTime
 )
 from sqlalchemy.orm import relationship
 from .database import Base
+from datetime import datetime
 
 class Country(Base):
     __tablename__ = "countries"
@@ -61,3 +62,46 @@ class IndicatorValue(Base):
     country   = relationship("Country", back_populates="indicator_values")
     indicator = relationship("Indicator", back_populates="values")
     source    = relationship("DataSource", back_populates="values")
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id              = Column(Integer, primary_key=True, index=True)
+    email           = Column(String(255), unique=True, index=True, nullable=False) # Standard max email length
+    hashed_password = Column(String(255), nullable=False) # Sufficient for bcrypt hash
+    is_active       = Column(Boolean, default=True)
+    role            = Column(String(50), default="user") # e.g., "user", "admin"
+    company         = Column(String(100), nullable=True)
+    full_name       = Column(String(100), nullable=True)
+
+    # Relationship to GeoZone
+    geozones = relationship("GeoZone", back_populates="user", cascade="all, delete-orphan")
+    # Relationship to UserConfiguration (one-to-one)
+    config = relationship("UserConfiguration", back_populates="user", uselist=False, cascade="all, delete-orphan")
+
+
+class GeoZone(Base):
+    __tablename__ = "geozones"
+
+    id            = Column(Integer, primary_key=True, index=True)
+    name          = Column(String(255), nullable=False, index=True)
+    description   = Column(String(500), nullable=True)
+    geojson_data  = Column(Text, nullable=False) # Storing GeoJSON as text
+    user_id       = Column(Integer, ForeignKey("users.id"), nullable=True) # Optional owner
+    created_at    = Column(DateTime, default=datetime.utcnow)
+    updated_at    = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    user = relationship("User", back_populates="geozones")
+
+
+class UserConfiguration(Base):
+    __tablename__ = "user_configurations"
+
+    id             = Column(Integer, primary_key=True, index=True)
+    user_id        = Column(Integer, ForeignKey("users.id"), nullable=False, unique=True)
+    configurations = Column(Text, nullable=True) # JSON string
+    created_at     = Column(DateTime, default=datetime.utcnow)
+    updated_at     = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    user = relationship("User", back_populates="config")
