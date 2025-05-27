@@ -1,0 +1,116 @@
+/* src/app/core/layout/header/header.component.css */
+.app-header-layout {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  padding: 0.8rem 2rem; /* Adjusted padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center; /* Center the header content container */
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure header stays on top */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width, 1200px); /* Use a max-width for content */
+}
+
+.logo-title a {
+  color: var(--light-text-color);
+  text-decoration: none;
+  font-size: 1.75rem; /* Slightly larger logo font */
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: bold;
+}
+
+.logo-title a:hover {
+  color: var(--secondary-color); /* Peter River Blue for hover */
+}
+
+.main-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-navigation li {
+  margin-left: 1.5rem; /* Spacing between nav items */
+}
+
+.main-navigation a {
+  color: var(--light-text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-navigation a:hover {
+  background-color: var(--secondary-color); /* Peter River Blue */
+  color: var(--light-text-color);
+  text-decoration: none;
+}
+
+.main-navigation a.active {
+  background-color: var(--accent-color); /* Alizarin Crimson for active link */
+  color: var(--light-text-color);
+  font-weight: bold;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+}
+
+.auth-links .btn {
+  color: var(--light-text-color);
+  text-decoration: none;
+  padding: 0.6rem 1.2rem; /* Slightly larger padding for buttons */
+  border-radius: 4px;
+  margin-left: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid transparent; /* Base border */
+}
+
+.auth-links .btn-login {
+  background-color: var(--secondary-color); /* Peter River Blue */
+  border-color: var(--secondary-color);
+}
+
+.auth-links .btn-login:hover {
+  background-color: #2980b9; /* Darker Peter River Blue */
+  border-color: #2980b9;
+}
+
+.auth-links .btn-register {
+  background-color: transparent;
+  border: 1px solid var(--light-text-color);
+}
+
+.auth-links .btn-register:hover {
+  background-color: var(--light-text-color);
+  color: var(--primary-color);
+}
+
+.auth-links .btn-logout {
+  background-color: var(--accent-color); /* Alizarin Crimson */
+  border-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.auth-links .btn-logout:hover {
+  background-color: #c0392b; /* Darker Alizarin Crimson */
+  border-color: #c0392b;
+}
+
+/* Add a general max-width variable if not already in styles.css for .header-content to use */
+/* :root { --max-width: 1200px; } */

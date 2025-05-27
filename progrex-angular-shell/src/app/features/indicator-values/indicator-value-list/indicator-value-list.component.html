@@ -1,0 +1,91 @@
+<div class="indicator-value-list-container">
+  <h2>Indicator Values</h2>
+
+  <div *ngIf="initialDataLoading" class="loading-indicator">
+    <p>Loading filter options...</p>
+  </div>
+
+  <form [formGroup]="filterForm" class="filter-form" *ngIf="!initialDataLoading">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="countryId">Filter by Country:</label>
+        <select id="countryId" formControlName="countryId">
+          <option [ngValue]="null">All Countries</option>
+          <option *ngFor="let country of countries" [value]="country.id">
+            {{ country.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="indicatorId">Filter by Indicator:</label>
+        <select id="indicatorId" formControlName="indicatorId">
+          <option [ngValue]="null">All Indicators</option>
+          <option *ngFor="let indicator of indicators" [value]="indicator.id">
+            {{ indicator.name }} ({{ indicator.code }})
+          </option>
+        </select>
+      </div>
+      <div class="form-group button-group">
+         <button type="button" class="btn btn-clear-filters" (click)="clearFilters()">Clear Filters</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="isLoading && !initialDataLoading" class="loading-indicator">
+    <p>Loading indicator values...</p>
+  </div>
+
+  <div *ngIf="errorMessage && !initialDataLoading" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !initialDataLoading && !errorMessage && indicatorValues.length === 0 && (filterForm.get('countryId')?.value || filterForm.get('indicatorId')?.value)" class="no-data-message">
+    <p>No indicator values found for the selected filters.</p>
+  </div>
+  
+  <div *ngIf="!isLoading && !initialDataLoading && !errorMessage && indicatorValues.length === 0 && !(filterForm.get('countryId')?.value || filterForm.get('indicatorId')?.value)" class="no-data-message">
+    <p>Please select filters to view indicator values.</p>
+  </div>
+
+  <div class="chart-actions" *ngIf="!isLoading && !initialDataLoading && !errorMessage && indicatorValues.length > 0">
+    <button *ngIf="!showChart" class="btn btn-view-chart" (click)="viewChart()" [disabled]="indicatorValues.length === 0">
+      View Chart
+    </button>
+    <button *ngIf="showChart" class="btn btn-hide-chart" (click)="hideChart()">
+      Hide Chart
+    </button>
+  </div>
+
+  <div *ngIf="showChart && chartData.length > 0" class="chart-display-section">
+    <app-indicator-chart 
+      [indicatorValues]="chartData"
+      [indicatorName]="selectedIndicatorNameForChart">
+    </app-indicator-chart>
+  </div>
+
+  <div *ngIf="!isLoading && !initialDataLoading && !errorMessage && indicatorValues.length > 0" class="indicator-values-table-wrapper">
+    <table class="indicator-values-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Country</th>
+          <th>Indicator</th>
+          <th>Data Source ID</th>
+          <th>Date</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let value of indicatorValues">
+          <td>{{ value.id }}</td>
+          <td>{{ value.countryName }}</td>
+          <td>{{ value.indicatorName }}</td>
+          <td>{{ value.source_id }}</td>
+          <td>{{ value.date | date:'yyyy-MM-dd' }}</td> <!-- Assuming 'date' is a string that can be piped to DatePipe -->
+          <td>{{ value.value | number }}</td> <!-- Using NumberPipe for formatting -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+/* src/app/core/layout/sidebar/sidebar.component.css */
+.app-sidebar-layout {
+  width: 220px; /* Fixed width for the sidebar */
+  background-color: #f8f9fa; /* A light grey, distinct from main content */
+  padding: 1.5rem;
+  height: 100%; /* Make sidebar take full height of its container (.app-body) */
+  border-right: 1px solid var(--border-color); /* Subtle border */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+.app-sidebar-layout p {
+  color: var(--primary-color);
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.app-sidebar-layout ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-sidebar-layout li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-sidebar-layout li a:hover {
+  background-color: var(--secondary-color);
+  color: var(--light-text-color);
+}
+
+.app-sidebar-layout li a.active { /* If you add routerLinkActive */
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  font-weight: bold;
+}

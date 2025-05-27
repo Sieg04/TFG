@@ -1,0 +1,83 @@
+/* src/app/features/dashboard/dashboard.component.css */
+.dashboard-container {
+  padding: 2rem;
+  background-color: var(--container-bg-color, #fff); /* Use theme variable if available */
+  border-radius: 8px;
+  /* box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Optional subtle shadow */
+  margin: 1rem; /* Add margin if not part of .main-content padding already */
+}
+
+.dashboard-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.dashboard-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+}
+
+.widget {
+  background-color: #ffffff; /* White background for widgets */
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease-in-out;
+}
+
+.widget:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.widget h3 {
+  color: var(--primary-color);
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color, #eee);
+  padding-bottom: 0.5rem;
+}
+
+.widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.widget ul li {
+  margin-bottom: 0.5rem;
+}
+
+.widget ul li a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.widget ul li a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.placeholder-widget {
+  background-color: var(--background-color, #f0f0f0); /* Lighter background for placeholder */
+  border: 1px dashed var(--border-color, #ccc);
+  padding: 2rem;
+  text-align: center;
+  color: #777;
+  border-radius: 4px;
+  min-height: 150px; /* Ensure it has some height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

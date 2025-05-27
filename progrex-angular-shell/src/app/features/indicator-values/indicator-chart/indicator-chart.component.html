@@ -1,0 +1,11 @@
+<div class="chart-container">
+  <canvas *ngIf="indicatorValues.length > 0"
+          baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [type]="lineChartType">
+  </canvas>
+  <div *ngIf="indicatorValues.length === 0" class="no-data-message">
+    <p>No data available to display chart.</p>
+  </div>
+</div>

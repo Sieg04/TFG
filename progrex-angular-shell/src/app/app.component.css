@@ -1,0 +1,79 @@
+/* src/app/app.component.css */
+
+/* Keep existing header and footer styles from previous tasks,
+   but ensure they don't conflict with the new body structure.
+   The app-header and app-footer classes are used by the HTML template.
+*/
+
+.app-header { /* This selector is from previous task's app.component.css. HeaderComponent has .app-header-layout */
+  /* Styles for the header component itself are in header.component.css */
+  /* This can be removed if app-header is no longer used on <app-header> in app.component.html */
+}
+
+.app-body {
+  display: flex;
+  flex-grow: 1; /* Ensures .app-body takes up available vertical space */
+  /* The overall page (body tag) is already display:flex, flex-direction:column in styles.css */
+}
+
+/* Sidebar is now a direct child of app-body, styled by its own component's CSS:
+   app-sidebar (selector in sidebar.component.css) for actual sidebar content styling.
+   The app-sidebar tag itself doesn't need much styling here unless for positioning within app-body.
+*/
+
+.main-content {
+  flex-grow: 1; /* Takes remaining space beside the sidebar */
+  padding: 1.5rem; /* Padding for content area */
+  background-color: var(--background-color); /* Or a slightly different shade for contrast */
+  overflow-y: auto; /* Allow scrolling for main content if it overflows */
+}
+
+.app-footer {
+  background-color: var(--text-color);
+  color: var(--light-text-color);
+  padding: 1.5rem 0; /* Adjusted padding */
+  /* margin-top: auto; /* This was in previous app.component.css, styles.css body handles flex for footer pushing */
+}
+
+.app-footer .container {
+  background-color: transparent;
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-width: var(--max-width, 1200px); /* Consistent max-width */
+}
+
+.app-footer p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.app-footer a {
+  color: var(--secondary-color);
+}
+
+.app-footer a:hover {
+  color: var(--light-text-color);
+  text-decoration: underline;
+}
+
+/* Ensure that the global styles in styles.css for body (min-height: 100vh, display:flex, flex-direction:column)
+   work well with this structure. The .app-body will be a flex item that grows, and within it,
+   the sidebar and main-content are laid out horizontally. */
+
+/* If app.component.html still uses <main class="app-main">, those styles need to be reconciled.
+   Based on the new HTML, <main class="main-content"> is used.
+   The old .app-main styles from previous app.component.css for padding can be moved to .main-content.
+*/
+
+/* Removing potentially conflicting old styles for .app-main from previous app.component.css if any */
+/*
+.app-main {
+  flex-grow: 1;
+  padding: 2rem 0;
+}
+
+.app-main .container {
+  // ...
+}
+*/

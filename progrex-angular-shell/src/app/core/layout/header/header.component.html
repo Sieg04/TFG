@@ -1,0 +1,27 @@
+<header class="app-header-layout">
+  <div class="header-content">
+    <div class="logo-title">
+      <a routerLink="/">Progrex</a>
+    </div>
+    <nav class="main-navigation">
+      <ul>
+        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/countries" routerLinkActive="active">Countries</a></li>
+        <li><a routerLink="/indicators" routerLinkActive="active">Indicators</a></li>
+        <li><a routerLink="/datasources" routerLinkActive="active">Data Sources</a></li>
+        <li><a routerLink="/indicatorvalues" routerLinkActive="active">Indicator Values</a></li>
+        <li><a routerLink="/admin/geozones" routerLinkActive="active" *ngIf="authService.isAuthenticated() && authService.getUserRole() === 'admin'">GeoZones (Admin)</a></li>
+        <li><a routerLink="/admin" routerLinkActive="active" *ngIf="authService.isAuthenticated() && authService.getUserRole() === 'admin'">Admin Area</a></li>
+      </ul>
+    </nav>
+    <div class="auth-links">
+      <ng-container *ngIf="!authService.isAuthenticated(); else loggedInLinks">
+        <a routerLink="/auth/login" class="btn btn-login">Login</a>
+        <a routerLink="/auth/register" class="btn btn-register">Register</a>
+      </ng-container>
+      <ng-template #loggedInLinks>
+        <button (click)="logout()" class="btn btn-logout">Logout</button>
+      </ng-template>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,59 @@
+<div class="geozone-form-container">
+  <h2>{{ isEditMode ? 'Edit GeoZone' : 'Create New GeoZone' }}</h2>
+
+  <div *ngIf="isLoading && isEditMode" class="loading-indicator">
+    <p>Loading GeoZone data...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <form [formGroup]="geoZoneForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading || !isEditMode">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" placeholder="Enter GeoZone name">
+      <div *ngIf="geoZoneForm.get('name')?.invalid && (geoZoneForm.get('name')?.dirty || geoZoneForm.get('name')?.touched)" class="invalid-feedback">
+        <div *ngIf="geoZoneForm.get('name')?.errors?.['required']">Name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description (Optional)</label>
+      <textarea id="description" formControlName="description" placeholder="Enter a brief description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="user_id">Assign to User (Optional)</label>
+      <select id="user_id" formControlName="user_id">
+        <option value="null">None</option> <!-- Changed from null to "null" for form control -->
+        <option *ngFor="let user of users" [value]="user.id">{{ user.full_name || user.email }} (ID: {{ user.id }})</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="geojson_file">Upload GeoJSON File (Optional)</label>
+      <input id="geojson_file" type="file" (change)="onFileChange($event)" accept=".json, .geojson">
+      <small class="form-text text-muted">Alternatively, paste GeoJSON data directly below.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="geojson_data">GeoJSON Data</label>
+      <textarea id="geojson_data" formControlName="geojson_data" rows="10" placeholder="Paste GeoJSON data here or upload a file"></textarea>
+      <div *ngIf="geoZoneForm.get('geojson_data')?.invalid && (geoZoneForm.get('geojson_data')?.dirty || geoZoneForm.get('geojson_data')?.touched)" class="invalid-feedback">
+        <div *ngIf="geoZoneForm.get('geojson_data')?.errors?.['required']">GeoJSON data is required.</div>
+        <div *ngIf="geoZoneForm.get('geojson_data')?.errors?.['jsonInvalid']">Invalid GeoJSON format.</div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-submit" [disabled]="geoZoneForm.invalid || isLoading">
+        {{ isLoading ? 'Saving...' : (isEditMode ? 'Update GeoZone' : 'Create GeoZone') }}
+      </button>
+      <button type="button" class="btn btn-cancel" [routerLink]="['/admin/geozones']" [disabled]="isLoading">Cancel</button>
+    </div>
+  </form>
+</div>

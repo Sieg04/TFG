@@ -1,0 +1,90 @@
+/* src/app/features/auth/login/login.component.css */
+.login-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--container-bg-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input.is-invalid {
+  border-color: var(--accent-color);
+}
+
+.invalid-feedback {
+  color: var(--accent-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.error-message {
+  background-color: #f8d7da; /* Light red for errors */
+  color: #721c24; /* Dark red text for errors */
+  border: 1px solid #f5c6cb; /* Red border for errors */
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.btn-submit {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-submit:not(:disabled):hover {
+  background-color: #1a252f; /* Darker shade of primary */
+}
+
+.register-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
