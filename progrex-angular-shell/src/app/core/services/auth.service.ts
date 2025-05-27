@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs'; // Import 'of' for the logout method
 import { tap } from 'rxjs/operators';
@@ -10,13 +11,11 @@ export interface LoginCredentials {
 }
 
 export interface RegistrationData {
-  username: string;
   email: string;
-  password_1: string;
-  password_2: string;
-  first_name?: string;
-  last_name?: string;
-  company?: string; // Added company field
+  password: string; // Changed from password_1
+  full_name?: string; // Added
+  company?: string;
+  // Removed username, password_2, first_name, last_name
 }
 
 export interface TokenResponse {
@@ -34,7 +33,7 @@ export class AuthService {
   // Adjust the API base URL as per your environment or proxy configuration
   private apiUrl = '/api/users'; // Assuming /api is proxied
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   login(credentials: LoginCredentials): Observable<TokenResponse> {
     // Django's token endpoint usually expects form data or application/json
@@ -61,17 +60,24 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    localStorage.removeItem(this.USER_INFO_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(this.TOKEN_KEY);
+      localStorage.removeItem(this.USER_INFO_KEY);
+    }
     // Potentially notify other parts of the application or redirect
   }
 
   saveToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(this.TOKEN_KEY, token);
+    }
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.TOKEN_KEY);
+    }
+    return null;
   }
 
   isAuthenticated(): boolean {
