@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'; // HTTP_INTERCEPTORS removed
-import { AuthService } from './services/auth.service';
+// AuthService import removed as it's providedIn: 'root' and no longer needed here
 // AuthInterceptor import removed as it's now a functional interceptor used in app.config.ts
 
 @NgModule({
@@ -11,7 +11,7 @@ import { AuthService } from './services/auth.service';
     HttpClientModule
   ],
   providers: [
-    AuthService // AuthService is providedIn: 'root', but also listed here as per earlier steps.
+    // AuthService is providedIn: 'root', so removed from here.
     // HTTP_INTERCEPTORS provider removed
   ]
 })
