@@ -12,10 +12,11 @@ export interface LoginCredentials {
 export interface RegistrationData {
   username: string;
   email: string;
-  password_1: string; // Adjusted to match potential Django backend expectations
-  password_2: string; // Adjusted to match potential Django backend expectations
+  password_1: string;
+  password_2: string;
   first_name?: string;
   last_name?: string;
+  company?: string; // Added company field
 }
 
 export interface TokenResponse {

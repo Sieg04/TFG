@@ -2,20 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IndicatorValuesRoutingModule } from './indicator-values-routing.module';
-import { NgChartsModule } from 'ng2-charts'; // Import NgChartsModule
+// NgChartsModule is removed as IndicatorChartComponent is standalone and imports BaseChartDirective
 
 // IndicatorValueListComponent is standalone and routed via IndicatorValuesRoutingModule.
-// It imports ReactiveFormsModule directly.
-// This module imports ReactiveFormsModule and NgChartsModule to be available for any potential non-standalone components
-// or if IndicatorChartComponent was not standalone and declared here.
+// It imports ReactiveFormsModule and IndicatorChartComponent directly.
+// This module only needs to import common Angular modules and its own routing.
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    IndicatorValuesRoutingModule,
-    NgChartsModule // Add NgChartsModule here
+    ReactiveFormsModule, // Keep if other non-standalone components in this module use it
+    IndicatorValuesRoutingModule
+    // NgChartsModule removed
   ]
 })
 export class IndicatorValuesModule { }

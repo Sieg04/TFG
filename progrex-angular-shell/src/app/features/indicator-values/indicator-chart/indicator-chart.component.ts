@@ -1,13 +1,13 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgChartsModule, BaseChartDirective } from 'ng2-charts';
+import { BaseChartDirective } from 'ng2-charts'; // Import BaseChartDirective directly
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { IndicatorValue } from '../../../core/models/indicator-value.model';
 
 @Component({
   selector: 'app-indicator-chart',
   standalone: true,
-  imports: [CommonModule, NgChartsModule],
+  imports: [CommonModule, BaseChartDirective], // Use BaseChartDirective, remove NgChartsModule
   templateUrl: './indicator-chart.component.html',
   styleUrls: ['./indicator-chart.component.css']
 })
