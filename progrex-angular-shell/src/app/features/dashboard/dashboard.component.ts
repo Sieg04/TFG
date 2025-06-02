@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service'; // Corrected path
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink], // Added RouterLink here
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'] // Corrected to styleUrls
 })
