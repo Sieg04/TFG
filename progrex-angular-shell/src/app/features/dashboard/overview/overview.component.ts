@@ -29,19 +29,7 @@ export class OverviewComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage: string | null = null;
 
-  constructor(private countryService: CountryService) {}
 
-  ngOnInit(): void {
-    this.isLoading = true;
-    this.countryService.getCountries().subscribe({ // Get all countries
-      next: (countries) => {
-        this.countryCount = countries.length;
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching countries for overview:', err);
-        this.errorMessage = 'Could not load country data.';
-        this.isLoading = false;
       }
     });
   }
