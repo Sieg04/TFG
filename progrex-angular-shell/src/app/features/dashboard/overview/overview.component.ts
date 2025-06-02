@@ -29,27 +29,7 @@ export class OverviewComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage: string | null = null;
 
-  constructor(private countryService: CountryService) {
-    // Removed log: console.log('[OverviewComponent] Constructor called');
-  }
 
-  ngOnInit(): void {
-    // Removed log: console.log('[OverviewComponent] ngOnInit called');
-    this.isLoading = true;
-    this.countryService.getCountries().subscribe({ // Get all countries
-      next: (countries) => {
-        // Removed log: console.log('[OverviewComponent] Countries fetched:', countries);
-        this.countryCount = countries.length;
-        // Removed log: console.log(`[OverviewComponent] Country count set to: ${this.countryCount}`);
-        this.isLoading = false;
-        // Removed log: console.log('[OverviewComponent] isLoading set to false.');
-      },
-      error: (err) => {
-        // Original console.error can be kept or removed. For now, let's assume it's kept as it's good practice for unhandled errors.
-        console.error('Error fetching countries for overview:', err);
-        this.errorMessage = 'Could not load country data.';
-        this.isLoading = false;
-        // Removed log: console.log('[OverviewComponent] isLoading set to false after error.');
       }
     });
   }
