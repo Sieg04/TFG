@@ -19,8 +19,8 @@ export interface RegistrationData {
 }
 
 export interface TokenResponse {
-  access: string; // New target based on user feedback
-  token_type: string; // Assuming this part of the structure is still valid
+  access_token: string; // Correct field name
+  token_type: string;
   refresh?: string;
 }
 
@@ -46,8 +46,8 @@ export class AuthService {
     })
       .pipe(
         tap(response => {
-          if (response && response.access) {
-            this.saveToken(response.access);
+          if (response && response.access_token) {
+            this.saveToken(response.access_token);
             // Potentially save refresh token or user details from response
           }
         })
