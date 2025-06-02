@@ -3,6 +3,10 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard'; // Import adminGuard
 import { SettingsComponent } from './features/dashboard/settings/settings.component';
+import { OverviewComponent } from './features/dashboard/overview/overview.component';
+import { GeoZoneCreateComponent } from './features/geozones/components/create/geozone-create.component';
+import { ManageIndicatorsComponent } from './features/indicators/components/manage/manage-indicators.component';
+import { UserProfileComponent } from './features/user/profile/user-profile.component';
 
 export const routes: Routes = [
   {
@@ -18,6 +22,11 @@ export const routes: Routes = [
     path: 'dashboard/settings', // The URL path
     component: SettingsComponent,    // The component to load
     canActivate: [authGuard]       // Protect with authGuard, similar to dashboard
+  },
+  {
+    path: 'dashboard/overview',    // The URL path
+    component: OverviewComponent,  // The component to load
+    canActivate: [authGuard]     // Protect with authGuard, similar to other dashboard routes
   },
   {
     path: '',
@@ -49,6 +58,21 @@ export const routes: Routes = [
     loadChildren: () => import('./features/indicator-values/indicator-values.module').then(m => m.IndicatorValuesModule),
     canActivate: [authGuard]
   },
+  {
+    path: 'geozones/create',
+    component: GeoZoneCreateComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'indicators/manage',
+    component: ManageIndicatorsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'user/profile',
+    component: UserProfileComponent,
+    canActivate: [authGuard]
+  }
   // Catch-all or 404 route can be added here if needed
   // { path: '**', component: PageNotFoundComponent }
 ];
