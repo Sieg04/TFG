@@ -34,13 +34,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response: TokenResponse) => {
-          if (response && response.access_token) {
-            // Ensure this.authService.saveToken is called by the service's tap operator,
-            // so no need to call it directly here.
+          if (response && response.access_token) { // Check for access_token
+            // this.authService.saveToken(response.access_token); // This line is redundant if authService.login's tap operator handles it.
+                                                            // However, the component should still verify the presence of access_token
+                                                            // for its own logic, like navigating.
             this.router.navigate(['/dashboard']);
           } else {
-            // Update error message to reflect expectation of 'access_token'
-            this.errorMessage = 'Login successful, but no token named "access_token" received.';
+            // Handle cases where token might be missing in response
+            this.errorMessage = 'Login successful, but no token received.';
           }
         },
         error: (err) => {
