@@ -1,6 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs'; // Import 'of' for the logout method
 import { tap } from 'rxjs/operators';
 
@@ -36,20 +36,24 @@ export class AuthService {
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   login(credentials: LoginCredentials): Observable<TokenResponse> {
-    // Django's token endpoint usually expects form data or application/json
-    // For form data:
-    // const formData = new FormData();
-    // formData.append('username', credentials.username);
-    // formData.append('password', credentials.password);
-    // return this.http.post<TokenResponse>(`${this.apiUrl}/token/`, formData)
-    
-    // For application/json:
-    return this.http.post<TokenResponse>(`${this.apiUrl}/token/`, credentials)
-      .pipe(
+    const formData = new FormData();
+    formData.append('username', credentials.username);
+    formData.append('password', credentials.password);
+
+    // Note: HttpClient will automatically set the Content-Type to multipart/form-data
+    // when a FormData object is passed. For application/x-www-form-urlencoded,
+    // we need to use HttpParams and set the Content-Type header manually.
+
+    const body = new HttpParams()
+      .set('username', credentials.username)
+      .set('password', credentials.password);
+
+    return this.http.post<TokenResponse>(`${this.apiUrl}/token`, body.toString(), {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    }).pipe(
         tap(response => {
           if (response && response.access) {
             this.saveToken(response.access);
-            // Potentially save refresh token or user details from response
           }
         })
       );
