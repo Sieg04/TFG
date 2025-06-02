@@ -1,5 +1,5 @@
 # backend/app/config.py
-from pydantic_settings import BaseSettings # Updated import for Pydantic v2+ style
+from pydantic import BaseSettings # Updated import for Pydantic v2+ style
 from dotenv import load_dotenv
 import os
 

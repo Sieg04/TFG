@@ -1,0 +1,37 @@
+<div class="data-source-list-container">
+  <h2>Data Sources</h2>
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading data sources...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && dataSources.length === 0" class="no-data-message">
+    <p>No data sources found.</p>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && dataSources.length > 0" class="data-sources-table-wrapper">
+    <table class="data-sources-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataSource of dataSources">
+          <td>{{ dataSource.id }}</td>
+          <td>{{ dataSource.name }}</td>
+          <td>
+            <a *ngIf="dataSource.url" [href]="dataSource.url" target="_blank" rel="noopener noreferrer">{{ dataSource.url }}</a>
+            <span *ngIf="!dataSource.url">N/A</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

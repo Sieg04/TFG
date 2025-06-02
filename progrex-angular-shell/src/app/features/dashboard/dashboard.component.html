@@ -1,0 +1,32 @@
+<div class="dashboard-container">
+  <h2>{{ welcomeMessage }}</h2>
+  <p>
+    This is your central hub for managing your activities and viewing key information.
+  </p>
+
+  <div class="dashboard-content">
+    <section class="widget">
+      <h3>Overview</h3>
+      <p>Your personalized data visualizations and information will appear here based on your configuration.</p>
+      <!-- Example placeholder for a chart or summary -->
+      <div class="placeholder-widget">
+        Chart/Summary Placeholder
+      </div>
+    </section>
+
+    <section class="widget">
+      <h3>Quick Actions</h3>
+      <ul>
+        <li><a routerLink="/geozones/create">Create New GeoZone</a></li>
+        <li><a routerLink="/indicators/manage">Manage Indicators</a></li>
+        <li><a routerLink="/user/profile">View Your Profile</a></li> <!-- Assuming a future profile page -->
+      </ul>
+    </section>
+
+    <section class="widget">
+      <h3>Recent Activity</h3>
+      <p>No recent activity to display yet.</p>
+      <!-- Placeholder for an activity feed -->
+    </section>
+  </div>
+</div>

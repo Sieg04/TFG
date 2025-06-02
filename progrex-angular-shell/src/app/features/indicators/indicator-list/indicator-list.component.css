@@ -1,0 +1,66 @@
+/* src/app/features/indicators/indicator-list/indicator-list.component.css */
+.indicator-list-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: var(--container-bg-color, #fff);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+.indicator-list-container h2 {
+  color: var(--primary-color);
+  font-family: 'Roboto Slab', sans-serif;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.loading-indicator, .error-message, .no-data-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  color: var(--accent-color);
+  background-color: #fdd; /* Light red background for errors */
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.no-data-message {
+  color: var(--text-color);
+}
+
+.indicators-table-wrapper {
+  overflow-x: auto; /* Allow horizontal scrolling for smaller screens */
+}
+
+.indicators-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.indicators-table th, .indicators-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #ddd);
+  vertical-align: middle;
+}
+
+.indicators-table th {
+  background-color: var(--primary-color-light, #e9ecef); /* Lighter shade of primary or a neutral grey */
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.indicators-table tbody tr:nth-child(even) {
+  background-color: var(--background-color, #f9f9f9); /* Alternate row color */
+}
+
+.indicators-table tbody tr:hover {
+  background-color: #e2e6ea; /* Hover effect for rows */
+}

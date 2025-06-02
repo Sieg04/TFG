@@ -1,0 +1,36 @@
+<div class="indicator-list-container">
+  <h2>Indicators</h2>
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading indicators...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && indicators.length === 0" class="no-data-message">
+    <p>No indicators found.</p>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && indicators.length > 0" class="indicators-table-wrapper">
+    <table class="indicators-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let indicator of indicators">
+          <td>{{ indicator.id }}</td>
+          <td>{{ indicator.code }}</td>
+          <td>{{ indicator.name }}</td>
+          <td>{{ indicator.unit || 'N/A' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+/* src/app/features/admin/geozones/geozone-list/geozone-list.component.css */
+.geozone-list-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: var(--container-bg-color, #fff);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+.geozone-list-container h2 {
+  color: var(--primary-color);
+  font-family: 'Roboto Slab', sans-serif;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.actions-header {
+  margin-bottom: 1.5rem;
+  text-align: right;
+}
+
+.btn-create {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-create:hover {
+  background-color: #1a252f; /* Darker primary */
+}
+
+.loading-indicator, .error-message, .no-data-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  color: var(--accent-color);
+  background-color: #fdd; /* Light red background for errors */
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.no-data-message {
+  color: var(--text-color);
+}
+
+.geozones-table-wrapper {
+  overflow-x: auto; /* Allow horizontal scrolling for smaller screens */
+}
+
+.geozones-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.geozones-table th, .geozones-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #ddd);
+  vertical-align: middle;
+}
+
+.geozones-table th {
+  background-color: var(--primary-color-light, #e9ecef); /* Lighter shade of primary or a neutral grey */
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.geozones-table tbody tr:nth-child(even) {
+  background-color: var(--background-color, #f9f9f9); /* Alternate row color */
+}
+
+.geozones-table tbody tr:hover {
+  background-color: #e2e6ea; /* Hover effect for rows */
+}
+
+.actions-cell {
+  white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+.actions-cell .btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  color: var(--light-text-color);
+  text-decoration: none; /* For routerLink <a> tags styled as buttons */
+  display: inline-block;  /* For routerLink <a> tags styled as buttons */
+}
+
+.actions-cell .btn-edit {
+  background-color: var(--secondary-color); /* Peter River Blue */
+}
+
+.actions-cell .btn-edit:hover {
+  background-color: #2980b9; /* Darker Peter River */
+}
+
+.actions-cell .btn-delete {
+  background-color: var(--accent-color); /* Alizarin Crimson */
+}
+
+.actions-cell .btn-delete:hover {
+  background-color: #c0392b; /* Darker Alizarin */
+}
+
+/* Add a light primary color if not present in styles.css */
+/* :root { --primary-color-light: #e9ecef; } */

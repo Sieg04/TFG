@@ -1,0 +1,175 @@
+/* src/app/features/indicator-values/indicator-value-list/indicator-value-list.component.css */
+.indicator-value-list-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: var(--container-bg-color, #fff);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+.indicator-value-list-container h2 {
+  color: var(--primary-color);
+  font-family: 'Roboto Slab', sans-serif;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.filter-form {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa; /* Light background for filter section */
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #eee);
+}
+
+.filter-form .form-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 1.5rem; /* Space between form groups */
+  align-items: flex-end; /* Align items to the bottom for button alignment */
+}
+
+.filter-form .form-group {
+  flex: 1; /* Allow form groups to grow */
+  min-width: 200px; /* Minimum width for form groups */
+}
+
+.filter-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.filter-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.filter-form .button-group {
+  display: flex;
+  align-items: flex-end; /* Ensure button aligns with select inputs */
+}
+
+.btn-clear-filters {
+  background-color: var(--secondary-color);
+  color: var(--light-text-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+}
+
+.btn-clear-filters:hover {
+  background-color: #2980b9; /* Darker secondary */
+}
+
+
+.loading-indicator, .error-message, .no-data-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  color: var(--accent-color);
+  background-color: #fdd; /* Light red background for errors */
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.no-data-message {
+  color: var(--text-color);
+}
+
+.indicator-values-table-wrapper {
+  overflow-x: auto; /* Allow horizontal scrolling for smaller screens */
+}
+
+.indicator-values-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.indicator-values-table th, .indicator-values-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #ddd);
+  vertical-align: middle;
+}
+
+.indicator-values-table th {
+  background-color: var(--primary-color-light, #e9ecef);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.indicator-values-table tbody tr:nth-child(even) {
+  background-color: var(--background-color, #f9f9f9);
+}
+
+.indicator-values-table tbody tr:hover {
+  background-color: #e2e6ea;
+}
+
+/* Chart Actions and Display Section */
+.chart-actions {
+  margin-bottom: 1.5rem;
+  text-align: right; /* Align buttons to the right */
+}
+
+.chart-actions .btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
+  margin-left: 0.5rem; /* Space between buttons if multiple are visible */
+}
+
+.btn-view-chart {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  border-color: var(--primary-color);
+}
+
+.btn-view-chart:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-view-chart:not(:disabled):hover {
+  background-color: #1a252f; /* Darker primary */
+  border-color: #1a252f;
+}
+
+.btn-hide-chart {
+  background-color: var(--accent-color);
+  color: var(--light-text-color);
+  border-color: var(--accent-color);
+}
+
+.btn-hide-chart:hover {
+  background-color: #c0392b; /* Darker accent */
+  border-color: #c0392b;
+}
+
+.chart-display-section {
+  margin-bottom: 1.5rem;
+  /* Styles for the container of app-indicator-chart are handled by chart-container in its own CSS */
+}

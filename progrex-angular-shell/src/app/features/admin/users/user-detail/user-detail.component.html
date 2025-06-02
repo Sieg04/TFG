@@ -1,0 +1,69 @@
+<div class="user-detail-container">
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading user details...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <ng-container *ngIf="userDetailData$ | async as data">
+    <div *ngIf="data && !isLoading && !errorMessage">
+      <h2>User Details: {{ data.user.full_name || data.user.email }}</h2>
+
+      <section class="detail-section user-info">
+        <h3>General Information</h3>
+        <div class="info-grid">
+          <div><strong>ID:</strong> {{ data.user.id }}</div>
+          <div><strong>Email:</strong> {{ data.user.email }}</div>
+          <div><strong>Full Name:</strong> {{ data.user.full_name || 'N/A' }}</div>
+          <div><strong>Company:</strong> {{ data.user.company || 'N/A' }}</div>
+          <div><strong>Role:</strong> <span class="role-badge role-{{ data.user.role }}">{{ data.user.role }}</span></div>
+          <div>
+            <strong>Status:</strong>
+            <span [ngClass]="data.user.is_active ? 'status-active' : 'status-inactive'">
+              {{ data.user.is_active ? 'Active' : 'Inactive' }}
+            </span>
+          </div>
+        </div>
+        <!-- Placeholder for Edit User Details button -->
+        <!-- <button class="btn btn-edit-details" [routerLink]="['/admin/users/edit', data.user.id]">Edit Details</button> -->
+      </section>
+
+      <section class="detail-section assigned-geozones">
+        <h3>Assigned GeoZones ({{ data.assignedGeoZones.length }})</h3>
+        <div *ngIf="data.assignedGeoZones.length > 0; else noGeoZones" class="geozone-list">
+          <ul>
+            <li *ngFor="let geozone of data.assignedGeoZones">
+              {{ geozone.name }} (ID: {{ geozone.id }})
+              <!-- Add link to geozone details or manage assignment if needed -->
+            </li>
+          </ul>
+        </div>
+        <ng-template #noGeoZones>
+          <p>No GeoZones are currently assigned to this user.</p>
+        </ng-template>
+        <!-- Placeholder for Manage GeoZone Assignments button -->
+        <!-- <button class="btn btn-manage-geozones">Manage GeoZone Assignments</button> -->
+      </section>
+
+      <section class="detail-section user-configurations">
+        <h3>User Specific Configurations</h3>
+        <p class="placeholder-text">
+          Future: Admin will manage specific data visibility, feature access, and other configurations for this user here.
+        </p>
+        <!-- Example: <app-user-configuration-editor [userId]="data.user.id"></app-user-configuration-editor> -->
+      </section>
+
+      <div class="actions-footer">
+        <button class="btn btn-back" routerLink="/admin/users">Back to User List</button>
+      </div>
+
+    </div>
+  </ng-container>
+
+  <div *ngIf="!isLoading && !errorMessage && !(userDetailData$ | async)" class="no-data-message">
+    <p>User data could not be loaded or user does not exist.</p>
+    <button class="btn btn-back" routerLink="/admin/users">Back to User List</button>
+  </div>
+</div>

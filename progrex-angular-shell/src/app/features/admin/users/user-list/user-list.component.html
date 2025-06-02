@@ -1,0 +1,52 @@
+<div class="user-list-container">
+  <h2>User Management</h2>
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading users...</p>
+    <!-- Consider adding a spinner or more visual loading state here -->
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && users.length === 0" class="no-users-message">
+    <p>No users found.</p>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && users.length > 0" class="users-table-wrapper">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Full Name</th>
+          <th>Role</th>
+          <th>Company</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.full_name || 'N/A' }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.company || 'N/A' }}</td>
+          <td>
+            <span [ngClass]="user.is_active ? 'status-active' : 'status-inactive'">
+              {{ user.is_active ? 'Yes' : 'No' }}
+            </span>
+          </td>
+          <td class="actions-cell">
+            <a class="btn btn-view-details" [routerLink]="['/admin/users', user.id]">View Details</a>
+            <button class="btn btn-delete" (click)="deleteUser(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Placeholder for Add User button -->
+  <!-- <button class="btn btn-add-user" [routerLink]="['/admin/users/create']">Add New User</button> -->
+</div>

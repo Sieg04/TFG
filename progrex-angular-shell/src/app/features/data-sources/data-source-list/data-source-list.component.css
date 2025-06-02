@@ -1,0 +1,76 @@
+/* src/app/features/data-sources/data-source-list/data-source-list.component.css */
+.data-source-list-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: var(--container-bg-color, #fff);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+.data-source-list-container h2 {
+  color: var(--primary-color);
+  font-family: 'Roboto Slab', sans-serif;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.loading-indicator, .error-message, .no-data-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  color: var(--accent-color);
+  background-color: #fdd; /* Light red background for errors */
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.no-data-message {
+  color: var(--text-color);
+}
+
+.data-sources-table-wrapper {
+  overflow-x: auto; /* Allow horizontal scrolling for smaller screens */
+}
+
+.data-sources-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.data-sources-table th, .data-sources-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #ddd);
+  vertical-align: middle;
+}
+
+.data-sources-table th {
+  background-color: var(--primary-color-light, #e9ecef); /* Lighter shade of primary or a neutral grey */
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.data-sources-table tbody tr:nth-child(even) {
+  background-color: var(--background-color, #f9f9f9); /* Alternate row color */
+}
+
+.data-sources-table tbody tr:hover {
+  background-color: #e2e6ea; /* Hover effect for rows */
+}
+
+.data-sources-table td a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.data-sources-table td a:hover {
+  text-decoration: underline;
+  color: var(--primary-color);
+}

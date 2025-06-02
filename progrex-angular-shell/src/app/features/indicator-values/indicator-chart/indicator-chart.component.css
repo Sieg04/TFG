@@ -1,0 +1,25 @@
+/* src/app/features/indicator-values/indicator-chart/indicator-chart.component.css */
+.chart-container {
+  display: block;
+  width: 100%; /* Or a specific width if needed */
+  height: 400px; /* Default height, can be adjusted */
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #ffffff; /* White background for chart area */
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative; /* For potential absolute positioning of elements inside if needed */
+}
+
+.chart-container canvas {
+  /* Chart.js canvas is responsive by default if maintainAspectRatio is false */
+}
+
+.no-data-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-color);
+  font-style: italic;
+}

@@ -1,0 +1,45 @@
+<div class="geozone-list-container">
+  <h2>GeoZone Management</h2>
+
+  <div class="actions-header">
+    <button class="btn btn-create" [routerLink]="['/admin/geozones/new']">Create New GeoZone</button>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading GeoZones...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && geoZones.length === 0" class="no-data-message">
+    <p>No GeoZones found.</p>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && geoZones.length > 0" class="geozones-table-wrapper">
+    <table class="geozones-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Assigned User ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let geozone of geoZones">
+          <td>{{ geozone.id }}</td>
+          <td>{{ geozone.name }}</td>
+          <td>{{ geozone.description || 'N/A' }}</td>
+          <td>{{ geozone.user_id || 'None' }}</td>
+          <td class="actions-cell">
+            <button class="btn btn-edit" [routerLink]="['/admin/geozones/edit', geozone.id]">Edit</button>
+            <button class="btn btn-delete" (click)="deleteGeoZone(geozone.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
