@@ -1,0 +1,23 @@
+# Ignorar archivos temporales de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar dependencias (por ejemplo, Node.js)
+node_modules/
+
+# Ignorar archivos de configuración del entorno
+.env
+
+# Ignorar compilados de Python
+__pycache__/
+*.pyc
+
+# Ignorar binarios o compilados
+*.exe
+*.dll
+*.o
+*.out
+
+# Ignorar carpetas de compilación
+build/
+dist/
