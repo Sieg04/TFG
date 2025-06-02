@@ -1,6 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'; // Ensure HttpParams is imported
 import { Observable, of } from 'rxjs'; // Import 'of' for the logout method
 import { tap } from 'rxjs/operators';
 
@@ -19,8 +19,9 @@ export interface RegistrationData {
 }
 
 export interface TokenResponse {
-  access: string; // Common name for access token in JWT responses
-  refresh?: string; // Optional refresh token
+  access_token: string; // Correct field name
+  token_type: string;
+  refresh?: string;
 }
 
 @Injectable({
@@ -36,19 +37,17 @@ export class AuthService {
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   login(credentials: LoginCredentials): Observable<TokenResponse> {
-    // Django's token endpoint usually expects form data or application/json
-    // For form data:
-    // const formData = new FormData();
-    // formData.append('username', credentials.username);
-    // formData.append('password', credentials.password);
-    // return this.http.post<TokenResponse>(`${this.apiUrl}/token/`, formData)
-    
-    // For application/json:
-    return this.http.post<TokenResponse>(`${this.apiUrl}/token/`, credentials)
+    const body = new HttpParams()
+      .set('username', credentials.username)
+      .set('password', credentials.password);
+
+    return this.http.post<TokenResponse>(`${this.apiUrl}/token/`, body, {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') // Explicitly set, though HttpParams usually does this.
+    })
       .pipe(
         tap(response => {
-          if (response && response.access) {
-            this.saveToken(response.access);
+          if (response && response.access_token) {
+            this.saveToken(response.access_token);
             // Potentially save refresh token or user details from response
           }
         })
