@@ -1,8 +1,8 @@
 # backend/app/crud.py
-import json # Added for GeoJSON string handling
+import json
 from sqlalchemy.orm import Session
 from . import models, schemas
-from datetime import date # Not used in user CRUD, but keep for other funcs
+from datetime import date, datetime, timedelta  # Added datetime, timedelta
 from passlib.context import CryptContext
 
 # Password Hashing Context
@@ -203,6 +203,134 @@ def create_user_configuration(db: Session, user_id: int, config: schemas.UserCon
     db.commit()
     db.refresh(db_config)
     return db_config
+
+
+# ----- CountryEconomicProfile -----
+
+def _get_mock_economic_data(country_name: str) -> dict:
+    """Generates mock economic data for a given country name."""
+    # Generate some dates for the last few months
+    today = datetime.today()
+    dates = [(today - timedelta(days=30 * i)).strftime("%Y-%m-%d") for i in range(4)]
+    dates.reverse() # Chronological order
+
+    if country_name == "Utopia":
+        return {
+            "stock_market": {
+                "name": "Utopia Stock Exchange (USE)",
+                "points": [
+                    {"date": dates[0], "value": 1500.00},
+                    {"date": dates[1], "value": 1520.50},
+                    {"date": dates[2], "value": 1510.75},
+                    {"date": dates[3], "value": 1550.25},
+                ]
+            },
+            "real_estate": {
+                "average_price_sqm_usd": 7500,
+                "price_trend": [
+                    {"date": dates[0], "value_usd_sqm": 7400},
+                    {"date": dates[1], "value_usd_sqm": 7450},
+                    {"date": dates[2], "value_usd_sqm": 7500},
+                    {"date": dates[3], "value_usd_sqm": 7550},
+                ]
+            },
+            "economy_type": "Advanced Technology Driven",
+            "main_sectors": [
+                {"name": "Renewable Energy", "leading_companies": ["GreenTech Solutions", "Solaris Corp"]},
+                {"name": "Bio-engineering", "leading_companies": ["BioSynth Inc.", "LifeGene Ltd."]}
+            ],
+            "unicorn_companies": [
+                {"name": "FutureAI", "valuation_billion_usd": 5.2, "sector": "Artificial Intelligence"},
+                {"name": "EcoInnovate", "valuation_billion_usd": 3.1, "sector": "Sustainability Tech"}
+            ]
+        }
+    elif country_name == "El Dorado":
+        return {
+            "stock_market": {
+                "name": "El Dorado Gold Standard Exchange (EDGE)",
+                "points": [
+                    {"date": dates[0], "value": 800.00},
+                    {"date": dates[1], "value": 810.00},
+                    {"date": dates[2], "value": 790.50},
+                    {"date": dates[3], "value": 820.00},
+                ]
+            },
+            "real_estate": {
+                "average_price_sqm_usd": 3200,
+                "price_trend": [
+                    {"date": dates[0], "value_usd_sqm": 3100},
+                    {"date": dates[1], "value_usd_sqm": 3150},
+                    {"date": dates[2], "value_usd_sqm": 3200},
+                    {"date": dates[3], "value_usd_sqm": 3250},
+                ]
+            },
+            "economy_type": "Resource-Rich Export-Oriented",
+            "main_sectors": [
+                {"name": "Mining", "leading_companies": ["GoldMine Corp", "Precious Metals Ltd."]},
+                {"name": "Agriculture", "leading_companies": ["Tropical Harvests", "El Dorado Farms"]}
+            ],
+            "unicorn_companies": [
+                {"name": "Ricura Resources", "valuation_billion_usd": 2.0, "sector": "Natural Resources Tech"},
+            ]
+        }
+    else: # Default mock data for other countries
+        return {
+            "stock_market": {
+                "name": f"{country_name} National Stock Market (NSM)",
+                "points": [
+                    {"date": dates[0], "value": 1000.00 + (hash(country_name) % 100)},
+                    {"date": dates[1], "value": 1020.50 + (hash(country_name) % 100)},
+                    {"date": dates[2], "value": 1010.75 + (hash(country_name) % 100)},
+                    {"date": dates[3], "value": 1040.25 + (hash(country_name) % 100)},
+                ]
+            },
+            "real_estate": {
+                "average_price_sqm_usd": 4000 + (hash(country_name) % 500),
+                "price_trend": [
+                    {"date": dates[0], "value_usd_sqm": 3900 + (hash(country_name) % 500)},
+                    {"date": dates[1], "value_usd_sqm": 3950 + (hash(country_name) % 500)},
+                    {"date": dates[2], "value_usd_sqm": 4000 + (hash(country_name) % 500)},
+                    {"date": dates[3], "value_usd_sqm": 4050 + (hash(country_name) % 500)},
+                ]
+            },
+            "economy_type": "Mixed Economy",
+            "main_sectors": [
+                {"name": "Tourism", "leading_companies": [f"{country_name} Tours", "Holiday Inc."]},
+                {"name": "Manufacturing", "leading_companies": ["BuildIt Co.", "Quality Goods Ltd."]}
+            ],
+            "unicorn_companies": []
+        }
+
+def create_country_economic_profile(db: Session, country_id: int, country_name: str) -> models.CountryEconomicProfile:
+    """
+    Creates an economic profile for a country using mock data.
+    If a profile for the country_id already exists, it will not create a new one.
+    (The unique constraint on country_id in the model handles this at DB level,
+    but a check can be added here if specific behavior is needed before DB error)
+    """
+    # Optional: Check if profile already exists, though DB constraint handles it
+    # existing_profile = get_country_economic_profile_by_country_id(db, country_id)
+    # if existing_profile:
+    #     return existing_profile # Or raise an error, or update, depending on desired logic
+
+    mock_data = _get_mock_economic_data(country_name)
+
+    # The 'economic_data' field in the model expects a string (Text type).
+    # Pydantic's 'Any' type in the schema will allow a dict, which we then serialize to JSON string.
+    profile_data_create = schemas.CountryEconomicProfileCreate(economic_data=mock_data)
+
+    db_profile = models.CountryEconomicProfile(
+        country_id=country_id,
+        economic_data=json.dumps(profile_data_create.economic_data) # Serialize dict to JSON string
+    )
+    db.add(db_profile)
+    db.commit()
+    db.refresh(db_profile)
+    return db_profile
+
+def get_country_economic_profile_by_country_id(db: Session, country_id: int) -> models.CountryEconomicProfile | None:
+    """Fetches an economic profile by country_id."""
+    return db.query(models.CountryEconomicProfile).filter(models.CountryEconomicProfile.country_id == country_id).first()
 
 def update_user_configuration(db: Session, user_id: int, config_update: schemas.UserConfigurationUpdate):
     # This function performs a partial update (merge) of the configuration.

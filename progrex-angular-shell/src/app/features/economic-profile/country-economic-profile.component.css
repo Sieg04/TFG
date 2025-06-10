@@ -1,0 +1,93 @@
+/* progrex-angular-shell/src/app/features/economic-profile/country-economic-profile.component.css */
+.profile-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading-indicator, .error-message, .no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.error-message {
+  color: red;
+}
+
+.profile-content h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-content h3 {
+  color: #555;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.data-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.data-section p, .data-section li {
+  line-height: 1.6;
+}
+
+.data-section strong {
+  color: #444;
+}
+
+.chart-section {
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 300px; /* Adjust as needed, or use aspect ratio in chart options */
+  width: 100%;
+}
+
+canvas {
+  display: block;
+  width: 100% !important; /* Ensure canvas is responsive within its wrapper */
+  height: 100% !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul ul {
+  padding-left: 30px;
+  list-style-type: circle;
+}
