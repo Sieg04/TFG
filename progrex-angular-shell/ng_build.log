@@ -4,11 +4,375 @@
 
 ❯ Building...
 ✔ Building...
+Browser bundles
+Initial chunk files   | Names                    |  Raw size | Estimated transfer size
+chunk-FMT7KA4A.js     | -                        | 309.13 kB |                84.87 kB
+chunk-YROTW4MO.js     | -                        | 217.85 kB |                65.58 kB
+chunk-Q6PY7TN2.js     | -                        |  37.63 kB |                 7.99 kB
+polyfills-B6TNHZQ6.js | polyfills                |  34.58 kB |                11.32 kB
+main-WLRWS6NQ.js      | main                     |  20.05 kB |                 4.75 kB
+styles-XZE4CIKH.css   | styles                   |  16.91 kB |                 1.88 kB
+chunk-MA275ZN7.js     | -                        |   1.05 kB |               482 bytes
+chunk-EVC4BNYX.js     | -                        | 668 bytes |               668 bytes
+chunk-TN5G3Y4R.js     | -                        | 541 bytes |               541 bytes
+
+                      | Initial total            | 638.40 kB |               178.09 kB
+
+Lazy chunk files      | Names                    |  Raw size | Estimated transfer size
+chunk-KMPCS3VI.js     | admin-module             |  29.46 kB |                 6.04 kB
+chunk-7RFN2IEV.js     | uruguay-dashboard-module |  20.50 kB |                 3.85 kB
+chunk-HUKMR3LV.js     | indicator-values-module  |  15.35 kB |                 3.98 kB
+chunk-HQFUFZAG.js     | auth-module              |  13.88 kB |                 2.71 kB
+chunk-BVB7DFO4.js     | economic-profile-module  |  10.63 kB |                 2.91 kB
+chunk-XNY7WKZR.js     | data-sources-module      |   5.19 kB |                 1.57 kB
+chunk-UUDTU5SU.js     | countries-module         |   4.17 kB |                 1.32 kB
+chunk-QHAQWVDC.js     | indicators-module        |   4.12 kB |                 1.30 kB
+chunk-SNMEM3ZK.js     | -                        | 547 bytes |               547 bytes
+
+
+Server bundles
+Initial chunk files   | Names                    |  Raw size
+server.mjs            | server                   | 845.38 kB |
+main.server.mjs       | main.server              | 467.25 kB |
+chunk-GKJYJX4Y.mjs    | -                        | 307.21 kB |
+polyfills.server.mjs  | polyfills.server         | 266.08 kB |
+chunk-YFHORVJ7.mjs    | -                        | 217.91 kB |
+chunk-B7PRWTWQ.mjs    | -                        |  37.70 kB |
+chunk-X2SEQXRR.mjs    | -                        |   2.41 kB |
+chunk-GFUZYSQG.mjs    | -                        |   1.24 kB |
+chunk-DUKRXEST.mjs    | -                        |   1.08 kB |
+chunk-ISPNPQ3X.mjs    | -                        | 702 bytes |
+chunk-RTYAROC3.mjs    | -                        | 575 bytes |
+
+Lazy chunk files      | Names                    |  Raw size
+chunk-A2FNKQ7V.mjs    | admin-module             |  29.54 kB |
+chunk-37RNEOT2.mjs    | uruguay-dashboard-module |  20.57 kB |
+chunk-3CDXAP2L.mjs    | indicator-values-module  |  15.43 kB |
+chunk-DZ7T6H23.mjs    | auth-module              |  13.96 kB |
+chunk-EJSJJTUO.mjs    | xhr2                     |  12.14 kB |
+chunk-TNO4MGIL.mjs    | xhr2                     |  12.07 kB |
+chunk-QZHNPOSP.mjs    | economic-profile-module  |  10.70 kB |
+chunk-OWOUQP7X.mjs    | data-sources-module      |   5.26 kB |
+chunk-T253Y5D6.mjs    | countries-module         |   4.24 kB |
+chunk-75ZR5AUQ.mjs    | indicators-module        |   4.18 kB |
+chunk-DE5GR33S.mjs    | -                        | 581 bytes |
+
 Prerendered 0 static routes.
-Application bundle generation failed. [13.678 seconds]
+Application bundle generation complete. [22.225 seconds]
 
-[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS-996008: Component UruguayDashboardPageComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?[0m [1m[35m[plugin angular-compiler][0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
 
-    src/app/features/uruguay-dashboard/uruguay-dashboard.module.ts:12:4:
-[37m      12 │     [32mUruguayDashboardPageComponent[37m // Declare the component
-         ╵     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:74:51:
+[37m      74 │ ...ng>Index:</strong> {{ profileData?.[32mstock_market[37m?.main_index }}</p>
+         ╵                                       [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:75:52:
+[37m      75 │ ...rends:</strong> {{ profileData?.[32mstock_market[37m?.recent_trends }}</p>
+         ╵                                    [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:76:88:
+[37m      76 │ ...<em>Note: {{ profileData?.[32mstock_market[37m?.source_note }}</em></sm...
+         ╵                              [32m~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:81:52:
+[37m      81 │ .../strong> {{ profileData?.[32mreal_estate_market[37m?.general_trends }}</p>
+         ╵                             [32m~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:88:94:
+[37m      88 │ ...>Note: {{ profileData?.[32mreal_estate_market[37m?.source_note }}</em><...
+         ╵                           [32m~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:105:100:
+[37m      105 │ ...e: {{ profileData?.[32mprincipal_trade_partners[37m?.source_note }}</e...
+          ╵                       [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:110:50:
+[37m      110 │ ...:</strong> {{ profileData?.[32mcurrency_details[37m?.currency_code }}</p>
+          ╵                               [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:111:50:
+[37m      111 │ ...:</strong> {{ profileData?.[32mcurrency_details[37m?.currency_name }}</p>
+          ╵                               [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:112:58:
+[37m      112 │ ...k:</strong> {{ profileData?.[32mcurrency_details[37m?.central_bank }}</p>
+          ╵                                [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:113:103:
+[37m      113 │ ...ource: {{ profileData?.[32mcurrency_details[37m?.exchange_rate_source ...
+          ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:125:38:
+[37m      125 │ ...<em>{{ profileData?.[32mgdp_by_sector_source_note[37m }}</em></small></p>
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:129:94:
+[37m      129 │ ...riculture: {{profileData?.[32memployment_by_sector[37m?.agriculture}}</p>
+          ╵                              [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:130:88:
+[37m      130 │ ...ry">Industry: {{profileData?.[32memployment_by_sector[37m?.industry}}</p>
+          ╵                                 [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:131:88:
+[37m      131 │ ...es">Services: {{profileData?.[32memployment_by_sector[37m?.services}}</p>
+          ╵                                 [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:132:96:
+[37m      132 │ ...ote: {{ profileData?.[32memployment_by_sector[37m?.source_note }}</em>...
+          ╵                         [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:136:105:
+[37m      136 │ ...ity: {{profileData?.[32mpublic_spending_sectors[37m?.social_security}}...
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:137:93:
+[37m      137 │ ...ducation: {{profileData?.[32mpublic_spending_sectors[37m?.education}}</p>
+          ╵                             [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:138:87:
+[37m      138 │ ...lth">Health: {{profileData?.[32mpublic_spending_sectors[37m?.health}}</p>
+          ╵                                [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:139:103:
+[37m      139 │ ...ure: {{profileData?.[32mpublic_spending_sectors[37m?.infrastructure}}</p>
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:140:99:
+[37m      140 │ ...te: {{ profileData?.[32mpublic_spending_sectors[37m?.source_note }}</e...
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:144:38:
+[37m      144 │ ...>{{ profileData?.[32msocial_indicators_qualitative[37m?.poverty_rate_n...
+          ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:148:38:
+[37m      148 │ ...>{{ profileData?.[32msocial_indicators_qualitative[37m?.gini_index_sou...
+          ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:152:38:
+[37m      152 │ ... profileData?.[32mpopulation_demographics_source_note[37m }}</em></sma...
+          ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8107: The left side of this optional chain operation does not include 'null' or 'undefined' in its type, therefore the '?.' operator can be replaced with the '.' operator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.html:157:72:
+[37m      157 │ ...rofile data is currently unavailable for {{ country?.[32mname[37m }}.</p>
+          ╵                                                         [32m~~~~[0m
+
+  Error occurs in the template of component UruguayDashboardPageComponent.
+
+    src/app/features/uruguay-dashboard/pages/uruguay-dashboard-page/uruguay-dashboard-page.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./uruguay-dashboard-page.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mbundle initial exceeded maximum budget. Budget 500.00 kB was not met by 138.40 kB with a total of 638.40 kB.[0m
+
+
+Output location: /app/progrex-angular-shell/dist/progrex-angular-shell
