@@ -111,6 +111,7 @@
         <p><strong>Name:</strong> {{ profileData.currency_details?.currency_name }}</p>
         <p><strong>Central Bank:</strong> {{ profileData.currency_details?.central_bank }}</p>
         <small *ngIf="profileData.currency_details?.exchange_rate_source"><em>Source: {{ profileData.currency_details.exchange_rate_source }}</em></small>
+
       </div>
 
       <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.human_development_index as hdi">
@@ -141,11 +142,11 @@
       </div>
        <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.poverty_rate_note">
         <h5>Poverty Rate Note</h5>
-        <p><small><em>{{ profileData.social_indicators_qualitative.poverty_rate_note }}</em></small></p>
+        <p><small><em>{{ profileData?.social_indicators_qualitative?.poverty_rate_note }}</em></small></p>
       </div>
       <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.gini_index_source_note">
         <h5>Gini Index Source Note</h5>
-        <p><small><em>{{ profileData.social_indicators_qualitative.gini_index_source_note }}</em></small></p>
+        <p><small><em>{{ profileData?.social_indicators_qualitative?.gini_index_source_note }}</em></small></p>
       </div>
       <div class="profile-card" *ngIf="profileData?.population_demographics_source_note">
         <h5>Population Demographics Source Note</h5>
