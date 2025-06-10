@@ -53,7 +53,7 @@
         <li *ngFor="let sector of economicData.main_sectors">
           <strong>{{ sector.name }}</strong>
           <ul *ngIf="sector.leading_companies && sector.leading_companies.length > 0">
-            <li *ngFor="let company of sector.leading_companies">
+            <li *ngFor="let company of $any(sector.leading_companies)">
               <span *ngIf="typeof company === 'object' && company.name">{{ company.name }}</span>
               <span *ngIf="typeof company === 'string'">{{ company }}</span>
             </li>
