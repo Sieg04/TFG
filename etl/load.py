@@ -55,12 +55,12 @@ def ensure_indicator_exists(db: Session, indicator_code: str, indicator_name: st
 def load_countries(df: pd.DataFrame, db: Session):
     for _, row in df.iterrows():
         # create or ignore si ya existe
-        if not db.query(models.Country).filter_by(iso_code=row.iso_code).first():
+        if not db.query(models.Country).filter_by(iso_code=row['iso_code']).first():
             obj = models.Country(
-                iso_code=row.iso_code,
-                name=row.name,
-                region=row.region,
-                currency=row.currency
+                iso_code=row['iso_code'],
+                name=row['name'],
+                region=row['region'],
+                currency=row['currency']
             )
             db.add(obj)
     db.commit()
