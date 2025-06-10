@@ -11,7 +11,7 @@
 
   <div *ngIf="!isLoading && profile && economicData && !errorMessage" class="profile-content">
     <h2>Economic Profile for Country ID: {{ profile?.country_id }}</h2>
-
+    
     <section class="data-section">
       <h3>General Information</h3>
       <p><strong>Economy Type:</strong> {{ economicData?.economy_type }}</p>
@@ -51,7 +51,6 @@
       <h3>Main Economic Sectors</h3>
       <ul>
         <li *ngFor="let sector of economicData?.main_sectors">
-
           <strong>{{ sector.name }}</strong>
           <ul *ngIf="sector.leading_companies && sector.leading_companies.length > 0">
             <li *ngFor="let company of sector.leading_companies">
@@ -62,13 +61,11 @@
       </ul>
     </section>
      <section class="data-section" *ngIf="!economicData?.main_sectors || economicData?.main_sectors.length === 0">
-
         <p>No main sector data available.</p>
     </section>
 
 
     <section class="data-section" *ngIf="economicData?.unicorn_companies && economicData?.unicorn_companies.length > 0">
-
       <h3>Unicorn Companies</h3>
       <table>
         <thead>
@@ -80,7 +77,6 @@
         </thead>
         <tbody>
           <tr *ngFor="let company of economicData?.unicorn_companies">
-
             <td>{{ company.name }}</td>
             <td>{{ company.valuation_billion_usd | number:'1.1-1' }}B</td>
             <td>{{ company.sector }}</td>
@@ -89,7 +85,6 @@
       </table>
     </section>
     <section class="data-section" *ngIf="!economicData?.unicorn_companies || economicData?.unicorn_companies.length === 0">
-
         <p>No unicorn company data available.</p>
     </section>
 

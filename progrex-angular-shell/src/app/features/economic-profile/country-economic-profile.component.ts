@@ -2,16 +2,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CommonModule } from '@angular/common'; // Added CommonModule
-import { NgChartsModule } from 'ng2-charts'; // Added NgChartsModule
+import { CommonModule } from '@angular/common';
+import { NgChartsModule } from 'ng2-charts'; // Importación correcta en ng2-charts v6
 import { EconomicProfileService } from '../../core/services/economic-profile.service';
 import { CountryEconomicProfile, EconomicData, DataPoint, StockMarketData, RealEstateData } from '../../core/models/economic-profile.model';
-import { ChartConfiguration, ChartOptions, ChartType, TooltipItem } from 'chart.js';
+import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+import { TooltipItem } from 'chart.js/dist/types/types';
 
 @Component({
   selector: 'app-country-economic-profile',
   standalone: true, // Added standalone: true
-  imports: [CommonModule, NgChartsModule], // Added imports array
+  imports: [CommonModule, NgChartsModule], // Actualizado el nombre del módulo
   templateUrl: './country-economic-profile.component.html',
   styleUrls: ['./country-economic-profile.component.css']
 })
@@ -19,7 +20,7 @@ export class CountryEconomicProfileComponent implements OnInit {
 
   profile: CountryEconomicProfile | null = null;
   // Ensure EconomicData is properly typed if accessed directly from profile.economic_data
-  economicData: EconomicData | null = null;
+  economicData: EconomicData | null = null; 
   isLoading: boolean = true;
   errorMessage: string | null = null;
   countryId!: number; // Definite assignment assertion
@@ -58,7 +59,7 @@ export class CountryEconomicProfileComponent implements OnInit {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
-      y: {
+      y: { 
         beginAtZero: false,
         ticks: {
           callback: function(value) {
@@ -124,7 +125,7 @@ export class CountryEconomicProfileComponent implements OnInit {
         } else {
           this.economicData = data.economic_data as EconomicData;
         }
-
+        
         if (this.economicData) {
           this.prepareStockMarketChart();
           this.prepareRealEstateChart();
@@ -153,10 +154,10 @@ export class CountryEconomicProfileComponent implements OnInit {
       this.stockMarketChartData = {
         labels: labels,
         datasets: [
-          {
-            data: dataValues,
-            label: stockData.name || 'Stock Value',
-            borderColor: '#3e95cd',
+          { 
+            data: dataValues, 
+            label: stockData.name || 'Stock Value', 
+            borderColor: '#3e95cd', 
             backgroundColor: 'rgba(62, 149, 205, 0.1)',
             fill: true,
             tension: 0.1
@@ -177,8 +178,8 @@ export class CountryEconomicProfileComponent implements OnInit {
       this.realEstateChartData = {
         labels: labels,
         datasets: [
-          {
-            data: dataValues,
+          { 
+            data: dataValues, 
             label: 'Average Price Trend (USD/sqm)',
             borderColor: '#8e5ea2',
             backgroundColor: 'rgba(142, 94, 162, 0.1)',
