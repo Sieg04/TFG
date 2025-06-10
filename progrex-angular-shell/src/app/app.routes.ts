@@ -77,6 +77,11 @@ export const routes: Routes = [
     path: 'economic-profile',
     loadChildren: () => import('./features/economic-profile/economic-profile.module').then(m => m.EconomicProfileModule),
     canActivate: [authGuard] // Assuming this section also requires authentication
+  },
+  {
+    path: 'uruguay-dashboard',
+    loadChildren: () => import('./features/uruguay-dashboard/uruguay-dashboard.module').then(m => m.UruguayDashboardModule),
+    canActivate: [authGuard] // Assuming this section also requires authentication
   }
   // Catch-all or 404 route can be added here if needed
   // { path: '**', component: PageNotFoundComponent }

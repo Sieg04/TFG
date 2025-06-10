@@ -1,0 +1,164 @@
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Uruguay Economic Dashboard</h2>
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading data...</p>
+    <!-- Consider adding a spinner or more elaborate loading animation here -->
+  </div>
+
+  <div *ngIf="errorLoading" class="error-message">
+    <p><strong>Error:</strong> {{ errorLoading }}</p>
+    <p>Some data may not be available. Please try refreshing the page or contact support if the issue persists.</p>
+  </div>
+
+  <div *ngIf="!isLoading && country" class="content-section">
+    <h3 class="country-name">Country: {{ country.name }} ({{ country.iso_code }})</h3>
+    <p *ngIf="profileData?.last_updated" class="last-updated">Profile Last Updated: {{ profileData?.last_updated }}</p>
+
+    <hr class="section-divider">
+
+    <!-- Charts Section -->
+    <h4 class="section-title">Key Economic Indicators (Charts)</h4>
+    <div class="charts-grid">
+      <div class="chart-container" *ngIf="gdpCurrentChartData">
+        <h5>GDP (Current US$)</h5>
+        <canvas baseChart
+          [data]="gdpCurrentChartData"
+          [options]="gdpCurrentChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+      <div class="chart-container" *ngIf="gdpConstantChartData">
+        <h5>GDP (Constant 2015 US$)</h5>
+        <canvas baseChart
+          [data]="gdpConstantChartData"
+          [options]="gdpConstantChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+      <div class="chart-container" *ngIf="gdpGrowthChartData">
+        <h5>GDP Growth (Annual %)</h5>
+        <canvas baseChart
+          [data]="gdpGrowthChartData"
+          [options]="gdpGrowthChartOptions"
+          [type]="'bar'">
+        </canvas>
+      </div>
+      <div class="chart-container" *ngIf="inflationChartData">
+        <h5>Inflation (CPI Annual %)</h5>
+        <canvas baseChart
+          [data]="inflationChartData"
+          [options]="inflationChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Economic Profile Section -->
+    <h4 class="section-title">Detailed Economic Profile</h4>
+    <div *ngIf="profileData" class="profile-details-grid">
+
+      <div class="profile-card" *ngIf="profileData.major_companies && profileData.major_companies.length > 0">
+        <h5>Major Companies</h5>
+        <ul class="profile-list">
+          <li *ngFor="let company of profileData.major_companies">
+            <strong>{{ company.name }}</strong> ({{ company.sector }}): {{ company.description }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="profile-card" *ngIf="profileData.stock_market">
+        <h5>Stock Market</h5>
+        <p><strong>Index:</strong> {{ profileData.stock_market.main_index }}</p>
+        <p><strong>Trends:</strong> {{ profileData.stock_market.recent_trends }}</p>
+        <small *ngIf="profileData.stock_market.source_note"><em>Note: {{ profileData.stock_market.source_note }}</em></small>
+      </div>
+
+      <div class="profile-card" *ngIf="profileData.real_estate_market">
+        <h5>Real Estate Market</h5>
+        <p><strong>Trends:</strong> {{ profileData.real_estate_market.general_trends }}</p>
+        <div *ngIf="profileData.real_estate_market.key_areas && profileData.real_estate_market.key_areas.length > 0">
+          <strong>Key Areas:</strong>
+          <ul class="profile-list--inline">
+            <li *ngFor="let area of profileData.real_estate_market.key_areas">{{ area }}</li>
+          </ul>
+        </div>
+        <small *ngIf="profileData.real_estate_market.source_note"><em>Note: {{ profileData.real_estate_market.source_note }}</em></small>
+      </div>
+
+      <div class="profile-card" *ngIf="profileData.principal_trade_partners">
+        <h5>Principal Trade Partners</h5>
+        <div *ngIf="profileData.principal_trade_partners.exports && profileData.principal_trade_partners.exports.length > 0">
+          <strong>Exports:</strong>
+          <ul class="profile-list--inline">
+            <li *ngFor="let partner of profileData.principal_trade_partners.exports">{{ partner }}</li>
+          </ul>
+        </div>
+        <div *ngIf="profileData.principal_trade_partners.imports && profileData.principal_trade_partners.imports.length > 0">
+          <strong>Imports:</strong>
+          <ul class="profile-list--inline">
+            <li *ngFor="let partner of profileData.principal_trade_partners.imports">{{ partner }}</li>
+          </ul>
+        </div>
+        <small *ngIf="profileData.principal_trade_partners.source_note"><em>Note: {{ profileData.principal_trade_partners.source_note }}</em></small>
+      </div>
+
+      <div class="profile-card" *ngIf="profileData.currency_details">
+        <h5>Currency Details</h5>
+        <p><strong>Code:</strong> {{ profileData.currency_details.currency_code }}</p>
+        <p><strong>Name:</strong> {{ profileData.currency_details.currency_name }}</p>
+        <p><strong>Central Bank:</strong> {{ profileData.currency_details.central_bank }}</p>
+        <small *ngIf="profileData.currency_details.exchange_rate_source"><em>Source: {{ profileData.currency_details.exchange_rate_source }}</em></small>
+      </div>
+
+      <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.human_development_index as hdi">
+        <h5>Human Development Index (HDI)</h5>
+        <p><strong>Value:</strong> {{ hdi.value || 'N/A' }} ({{ hdi.year || 'N/A' }})</p>
+        <p><strong>Rank:</strong> {{ hdi.rank || 'N/A' }}</p>
+        <small *ngIf="hdi.source"><em>Source: {{ hdi.source }}</em></small>
+      </div>
+
+      <div class="profile-card" *ngIf="profileData.gdp_by_sector_source_note">
+        <h5>GDP by Sector Source Note</h5>
+        <p><small><em>{{ profileData.gdp_by_sector_source_note }}</em></small></p>
+      </div>
+       <div class="profile-card" *ngIf="profileData.employment_by_sector">
+        <h5>Employment by Sector</h5>
+        <p *ngIf="profileData.employment_by_sector.agriculture">Agriculture: {{profileData.employment_by_sector.agriculture}}</p>
+        <p *ngIf="profileData.employment_by_sector.industry">Industry: {{profileData.employment_by_sector.industry}}</p>
+        <p *ngIf="profileData.employment_by_sector.services">Services: {{profileData.employment_by_sector.services}}</p>
+        <small *ngIf="profileData.employment_by_sector.source_note"><em>Note: {{ profileData.employment_by_sector.source_note }}</em></small>
+      </div>
+      <div class="profile-card" *ngIf="profileData.public_spending_sectors">
+        <h5>Public Spending Sectors (General Info)</h5>
+        <p *ngIf="profileData.public_spending_sectors.social_security">Social Security: {{profileData.public_spending_sectors.social_security}}</p>
+        <p *ngIf="profileData.public_spending_sectors.education">Education: {{profileData.public_spending_sectors.education}}</p>
+        <p *ngIf="profileData.public_spending_sectors.health">Health: {{profileData.public_spending_sectors.health}}</p>
+        <p *ngIf="profileData.public_spending_sectors.infrastructure">Infrastructure: {{profileData.public_spending_sectors.infrastructure}}</p>
+        <small *ngIf="profileData.public_spending_sectors.source_note"><em>Note: {{ profileData.public_spending_sectors.source_note }}</em></small>
+      </div>
+       <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.poverty_rate_note">
+        <h5>Poverty Rate Note</h5>
+        <p><small><em>{{ profileData.social_indicators_qualitative.poverty_rate_note }}</em></small></p>
+      </div>
+      <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.gini_index_source_note">
+        <h5>Gini Index Source Note</h5>
+        <p><small><em>{{ profileData.social_indicators_qualitative.gini_index_source_note }}</em></small></p>
+      </div>
+      <div class="profile-card" *ngIf="profileData.population_demographics_source_note">
+        <h5>Population Demographics Source Note</h5>
+        <p><small><em>{{ profileData.population_demographics_source_note }}</em></small></p>
+      </div>
+
+    </div>
+    <div *ngIf="!profileData && !isLoading" class="no-data-message">
+      <p>Economic profile data is currently unavailable for {{ country?.name }}.</p>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && !country && !errorLoading" class="no-data-message">
+    <p>No data to display. Country information could not be loaded.</p>
+  </div>
+</div>
