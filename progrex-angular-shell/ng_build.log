@@ -1,0 +1,14 @@
+
+> progrex-angular-shell@0.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Prerendered 0 static routes.
+Application bundle generation failed. [13.678 seconds]
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS-996008: Component UruguayDashboardPageComponent is standalone, and cannot be declared in an NgModule. Did you mean to import it instead?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/uruguay-dashboard/uruguay-dashboard.module.ts:12:4:
+[37m      12 │     [32mUruguayDashboardPageComponent[37m // Declare the component
+         ╵     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m

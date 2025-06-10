@@ -69,48 +69,48 @@
         </ul>
       </div>
 
-      <div class="profile-card" *ngIf="profileData.stock_market">
+      <div class="profile-card" *ngIf="profileData?.stock_market">
         <h5>Stock Market</h5>
-        <p><strong>Index:</strong> {{ profileData.stock_market.main_index }}</p>
-        <p><strong>Trends:</strong> {{ profileData.stock_market.recent_trends }}</p>
-        <small *ngIf="profileData.stock_market.source_note"><em>Note: {{ profileData.stock_market.source_note }}</em></small>
+        <p><strong>Index:</strong> {{ profileData?.stock_market?.main_index }}</p>
+        <p><strong>Trends:</strong> {{ profileData?.stock_market?.recent_trends }}</p>
+        <small *ngIf="profileData?.stock_market?.source_note"><em>Note: {{ profileData?.stock_market?.source_note }}</em></small>
       </div>
 
-      <div class="profile-card" *ngIf="profileData.real_estate_market">
+      <div class="profile-card" *ngIf="profileData?.real_estate_market">
         <h5>Real Estate Market</h5>
-        <p><strong>Trends:</strong> {{ profileData.real_estate_market.general_trends }}</p>
-        <div *ngIf="profileData.real_estate_market.key_areas && profileData.real_estate_market.key_areas.length > 0">
+        <p><strong>Trends:</strong> {{ profileData?.real_estate_market?.general_trends }}</p>
+        <div *ngIf="profileData?.real_estate_market?.key_areas && profileData?.real_estate_market?.key_areas.length > 0">
           <strong>Key Areas:</strong>
           <ul class="profile-list--inline">
-            <li *ngFor="let area of profileData.real_estate_market.key_areas">{{ area }}</li>
+            <li *ngFor="let area of profileData?.real_estate_market?.key_areas">{{ area }}</li>
           </ul>
         </div>
-        <small *ngIf="profileData.real_estate_market.source_note"><em>Note: {{ profileData.real_estate_market.source_note }}</em></small>
+        <small *ngIf="profileData?.real_estate_market?.source_note"><em>Note: {{ profileData?.real_estate_market?.source_note }}</em></small>
       </div>
 
-      <div class="profile-card" *ngIf="profileData.principal_trade_partners">
+      <div class="profile-card" *ngIf="profileData?.principal_trade_partners">
         <h5>Principal Trade Partners</h5>
-        <div *ngIf="profileData.principal_trade_partners.exports && profileData.principal_trade_partners.exports.length > 0">
+        <div *ngIf="profileData?.principal_trade_partners?.exports && profileData?.principal_trade_partners?.exports.length > 0">
           <strong>Exports:</strong>
           <ul class="profile-list--inline">
-            <li *ngFor="let partner of profileData.principal_trade_partners.exports">{{ partner }}</li>
+            <li *ngFor="let partner of profileData?.principal_trade_partners?.exports">{{ partner }}</li>
           </ul>
         </div>
-        <div *ngIf="profileData.principal_trade_partners.imports && profileData.principal_trade_partners.imports.length > 0">
+        <div *ngIf="profileData?.principal_trade_partners?.imports && profileData?.principal_trade_partners?.imports.length > 0">
           <strong>Imports:</strong>
           <ul class="profile-list--inline">
-            <li *ngFor="let partner of profileData.principal_trade_partners.imports">{{ partner }}</li>
+            <li *ngFor="let partner of profileData?.principal_trade_partners?.imports">{{ partner }}</li>
           </ul>
         </div>
-        <small *ngIf="profileData.principal_trade_partners.source_note"><em>Note: {{ profileData.principal_trade_partners.source_note }}</em></small>
+        <small *ngIf="profileData?.principal_trade_partners?.source_note"><em>Note: {{ profileData?.principal_trade_partners?.source_note }}</em></small>
       </div>
 
-      <div class="profile-card" *ngIf="profileData.currency_details">
+      <div class="profile-card" *ngIf="profileData?.currency_details">
         <h5>Currency Details</h5>
-        <p><strong>Code:</strong> {{ profileData.currency_details.currency_code }}</p>
-        <p><strong>Name:</strong> {{ profileData.currency_details.currency_name }}</p>
-        <p><strong>Central Bank:</strong> {{ profileData.currency_details.central_bank }}</p>
-        <small *ngIf="profileData.currency_details.exchange_rate_source"><em>Source: {{ profileData.currency_details.exchange_rate_source }}</em></small>
+        <p><strong>Code:</strong> {{ profileData?.currency_details?.currency_code }}</p>
+        <p><strong>Name:</strong> {{ profileData?.currency_details?.currency_name }}</p>
+        <p><strong>Central Bank:</strong> {{ profileData?.currency_details?.central_bank }}</p>
+        <small *ngIf="profileData?.currency_details?.exchange_rate_source"><em>Source: {{ profileData?.currency_details?.exchange_rate_source }}</em></small>
       </div>
 
       <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.human_development_index as hdi">
@@ -120,36 +120,36 @@
         <small *ngIf="hdi.source"><em>Source: {{ hdi.source }}</em></small>
       </div>
 
-      <div class="profile-card" *ngIf="profileData.gdp_by_sector_source_note">
+      <div class="profile-card" *ngIf="profileData?.gdp_by_sector_source_note">
         <h5>GDP by Sector Source Note</h5>
-        <p><small><em>{{ profileData.gdp_by_sector_source_note }}</em></small></p>
+        <p><small><em>{{ profileData?.gdp_by_sector_source_note }}</em></small></p>
       </div>
-       <div class="profile-card" *ngIf="profileData.employment_by_sector">
+       <div class="profile-card" *ngIf="profileData?.employment_by_sector">
         <h5>Employment by Sector</h5>
-        <p *ngIf="profileData.employment_by_sector.agriculture">Agriculture: {{profileData.employment_by_sector.agriculture}}</p>
-        <p *ngIf="profileData.employment_by_sector.industry">Industry: {{profileData.employment_by_sector.industry}}</p>
-        <p *ngIf="profileData.employment_by_sector.services">Services: {{profileData.employment_by_sector.services}}</p>
-        <small *ngIf="profileData.employment_by_sector.source_note"><em>Note: {{ profileData.employment_by_sector.source_note }}</em></small>
+        <p *ngIf="profileData?.employment_by_sector?.agriculture">Agriculture: {{profileData?.employment_by_sector?.agriculture}}</p>
+        <p *ngIf="profileData?.employment_by_sector?.industry">Industry: {{profileData?.employment_by_sector?.industry}}</p>
+        <p *ngIf="profileData?.employment_by_sector?.services">Services: {{profileData?.employment_by_sector?.services}}</p>
+        <small *ngIf="profileData?.employment_by_sector?.source_note"><em>Note: {{ profileData?.employment_by_sector?.source_note }}</em></small>
       </div>
-      <div class="profile-card" *ngIf="profileData.public_spending_sectors">
+      <div class="profile-card" *ngIf="profileData?.public_spending_sectors">
         <h5>Public Spending Sectors (General Info)</h5>
-        <p *ngIf="profileData.public_spending_sectors.social_security">Social Security: {{profileData.public_spending_sectors.social_security}}</p>
-        <p *ngIf="profileData.public_spending_sectors.education">Education: {{profileData.public_spending_sectors.education}}</p>
-        <p *ngIf="profileData.public_spending_sectors.health">Health: {{profileData.public_spending_sectors.health}}</p>
-        <p *ngIf="profileData.public_spending_sectors.infrastructure">Infrastructure: {{profileData.public_spending_sectors.infrastructure}}</p>
-        <small *ngIf="profileData.public_spending_sectors.source_note"><em>Note: {{ profileData.public_spending_sectors.source_note }}</em></small>
+        <p *ngIf="profileData?.public_spending_sectors?.social_security">Social Security: {{profileData?.public_spending_sectors?.social_security}}</p>
+        <p *ngIf="profileData?.public_spending_sectors?.education">Education: {{profileData?.public_spending_sectors?.education}}</p>
+        <p *ngIf="profileData?.public_spending_sectors?.health">Health: {{profileData?.public_spending_sectors?.health}}</p>
+        <p *ngIf="profileData?.public_spending_sectors?.infrastructure">Infrastructure: {{profileData?.public_spending_sectors?.infrastructure}}</p>
+        <small *ngIf="profileData?.public_spending_sectors?.source_note"><em>Note: {{ profileData?.public_spending_sectors?.source_note }}</em></small>
       </div>
-       <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.poverty_rate_note">
+       <div class="profile-card" *ngIf="profileData?.social_indicators_qualitative?.poverty_rate_note">
         <h5>Poverty Rate Note</h5>
-        <p><small><em>{{ profileData.social_indicators_qualitative.poverty_rate_note }}</em></small></p>
+        <p><small><em>{{ profileData?.social_indicators_qualitative?.poverty_rate_note }}</em></small></p>
       </div>
-      <div class="profile-card" *ngIf="profileData.social_indicators_qualitative?.gini_index_source_note">
+      <div class="profile-card" *ngIf="profileData?.social_indicators_qualitative?.gini_index_source_note">
         <h5>Gini Index Source Note</h5>
-        <p><small><em>{{ profileData.social_indicators_qualitative.gini_index_source_note }}</em></small></p>
+        <p><small><em>{{ profileData?.social_indicators_qualitative?.gini_index_source_note }}</em></small></p>
       </div>
-      <div class="profile-card" *ngIf="profileData.population_demographics_source_note">
+      <div class="profile-card" *ngIf="profileData?.population_demographics_source_note">
         <h5>Population Demographics Source Note</h5>
-        <p><small><em>{{ profileData.population_demographics_source_note }}</em></small></p>
+        <p><small><em>{{ profileData?.population_demographics_source_note }}</em></small></p>
       </div>
 
     </div>

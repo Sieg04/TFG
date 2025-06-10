@@ -1,5 +1,5 @@
 # backend/app/config.py
-from pydantic_settings import BaseSettings # Updated import for Pydantic v2+ style
+from pydantic_settings import BaseSettings, SettingsConfigDict # Updated import for Pydantic v2+ style
 from dotenv import load_dotenv
 import os
 from pathlib import Path
@@ -17,8 +17,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))  # Default to 30 minutes if not set
     CORS_ORIGINS: list[str] = ["*"]  # Allow all origins by default
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(extra='ignore', env_file=".env")
 
 settings = Settings()
 print(f"[CONFIG_DEBUG] settings object: {repr(settings)}") # <--- ADD THIS LINE
