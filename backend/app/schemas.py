@@ -20,6 +20,23 @@ class Country(CountryBase):
         orm_mode = True
 
 
+# ------ CountryEconomicProfile schemas ------
+class CountryEconomicProfileBase(BaseModel):
+    economic_data: Any
+
+class CountryEconomicProfileCreate(CountryEconomicProfileBase):
+    pass
+
+class CountryEconomicProfile(CountryEconomicProfileBase):
+    id: int
+    country_id: int
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
 # ------ UserConfiguration schemas ------
 class UserConfigurationBase(BaseModel):
     configurations: Any # Can be a dict representing the JSON structure
