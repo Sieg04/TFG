@@ -20,6 +20,7 @@ class Country(Base):
     indicator_values = relationship(
         "IndicatorValue", back_populates="country", cascade="all, delete-orphan"
     )
+    economic_profile = relationship("CountryEconomicProfile", back_populates="country", uselist=False, cascade="all, delete-orphan")
 
 class Indicator(Base):
     __tablename__ = "indicators"
@@ -105,3 +106,15 @@ class UserConfiguration(Base):
     updated_at     = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     user = relationship("User", back_populates="config")
+
+
+class CountryEconomicProfile(Base):
+    __tablename__ = "country_economic_profiles"
+
+    id = Column(Integer, primary_key=True, index=True)
+    country_id = Column(Integer, ForeignKey("countries.id"), nullable=False, unique=True)
+    economic_data = Column(Text, nullable=True)  # To store JSON data
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    country = relationship("Country", back_populates="economic_profile")
