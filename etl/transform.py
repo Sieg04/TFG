@@ -19,11 +19,17 @@ def transform_countries(raw: List[Dict[str, Any]]) -> pd.DataFrame:
 def transform_indicator_values(
         raw: List[Dict[str, Any]],
         indicator_code: str
-) -> pd.DataFrame:
+) -> tuple[pd.DataFrame, str]:
     """
     Convierte la lista de observaciones de indicador en DataFrame con:
     iso_code, date, value, indicator_code.
+    También devuelve el nombre del indicador.
     """
+    if not raw:
+        return pd.DataFrame(), ""
+
+    indicator_name = raw[0]['indicator']['value']
+
     df = pd.json_normalize(raw)
     df = df.rename(columns={
         "country.id": "iso_code",
@@ -35,4 +41,4 @@ def transform_indicator_values(
     # Convertir tipos
     df["date"] = pd.to_datetime(df["date"], format="%Y").dt.date
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
-    return df.dropna(subset=["value"])
+    return df.dropna(subset=["value"]), indicator_name
