@@ -1,8 +1,9 @@
 // progrex-angular-shell/src/app/features/economic-profile/economic-profile.module.ts
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { NgChartsModule } from 'ng2-charts';
+// CommonModule and NgChartsModule are no longer needed here as the component is standalone
+// import { CommonModule } from '@angular/common';
+// import { NgChartsModule } from 'ng2-charts';
 
 import { CountryEconomicProfileComponent } from './country-economic-profile.component';
 
@@ -12,13 +13,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    CountryEconomicProfileComponent
+    // CountryEconomicProfileComponent is standalone, so not declared here.
   ],
   imports: [
-    CommonModule,
+    // CommonModule, // Not needed here
     RouterModule.forChild(routes),
-    NgChartsModule
+    // NgChartsModule // Not needed here
   ],
-  exports: [RouterModule] // Export RouterModule if this module's routes are to be used by a parent routing module directly
+  exports: [RouterModule]
 })
 export class EconomicProfileModule { }

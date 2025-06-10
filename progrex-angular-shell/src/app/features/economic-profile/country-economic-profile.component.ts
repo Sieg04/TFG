@@ -1,13 +1,17 @@
 // progrex-angular-shell/src/app/features/economic-profile/country-economic-profile.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http'; // Added HttpErrorResponse
+import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; // Added CommonModule
+import { NgChartsModule } from 'ng2-charts'; // Added NgChartsModule
 import { EconomicProfileService } from '../../core/services/economic-profile.service';
 import { CountryEconomicProfile, EconomicData, DataPoint, StockMarketData, RealEstateData } from '../../core/models/economic-profile.model';
-import { ChartConfiguration, ChartOptions, ChartType, TooltipItem } from 'chart.js'; // Added TooltipItem
+import { ChartConfiguration, ChartOptions, ChartType, TooltipItem } from 'chart.js';
 
 @Component({
   selector: 'app-country-economic-profile',
+  standalone: true, // Added standalone: true
+  imports: [CommonModule, NgChartsModule], // Added imports array
   templateUrl: './country-economic-profile.component.html',
   styleUrls: ['./country-economic-profile.component.css']
 })
@@ -130,7 +134,6 @@ export class CountryEconomicProfileComponent implements OnInit {
         }
         this.isLoading = false;
       },
-feature/economic-profile-demo
       error: (err: HttpErrorResponse) => {
         this.errorMessage = `Failed to load economic profile: ${err.message || 'Unknown error'}`;
         console.error(err);
