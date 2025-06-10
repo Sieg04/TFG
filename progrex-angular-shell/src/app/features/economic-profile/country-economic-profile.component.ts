@@ -130,6 +130,7 @@ export class CountryEconomicProfileComponent implements OnInit {
         }
         this.isLoading = false;
       },
+feature/economic-profile-demo
       error: (err: HttpErrorResponse) => {
         this.errorMessage = `Failed to load economic profile: ${err.message || 'Unknown error'}`;
         console.error(err);
