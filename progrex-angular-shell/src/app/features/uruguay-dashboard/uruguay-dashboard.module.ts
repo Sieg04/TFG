@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgChartsModule } from 'ng2-charts'; // Import NgChartsModule
+import { BaseChartDirective } from 'ng2-charts'; // Import BaseChartDirective
 
 import { UruguayDashboardRoutingModule } from './uruguay-dashboard-routing.module';
 import { UruguayDashboardPageComponent } from './pages/uruguay-dashboard-page/uruguay-dashboard-page.component';
@@ -9,12 +9,13 @@ import { UruguayDashboardPageComponent } from './pages/uruguay-dashboard-page/ur
 
 @NgModule({
   declarations: [
-    UruguayDashboardPageComponent // Declare the component
+    // UruguayDashboardPageComponent is now standalone
   ],
   imports: [
     CommonModule,
     UruguayDashboardRoutingModule,
-    NgChartsModule // Add NgChartsModule here
+    // BaseChartDirective is imported by UruguayDashboardPageComponent directly
+    UruguayDashboardPageComponent // Import the standalone component
   ]
 })
 export class UruguayDashboardModule { }

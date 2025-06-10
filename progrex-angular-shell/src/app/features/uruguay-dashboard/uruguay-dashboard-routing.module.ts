@@ -8,13 +8,6 @@ const routes: Routes = [
     component: UruguayDashboardPageComponent
   }
 ];
-export const routes: Routes = [
-    {
-        path: 'uruguay-dashboard',
-        loadChildren: () => import('./features/uruguay-dashboard/uruguay-dashboard.module').then(m => m.UruguayDashboardModule)
-    }
-    // Potentially other app routes here
-];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

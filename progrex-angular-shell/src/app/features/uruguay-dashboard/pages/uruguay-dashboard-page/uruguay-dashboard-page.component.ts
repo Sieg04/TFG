@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Required for *ngIf, *ngFor, etc.
-import { NgChartsModule } from 'ng2-charts'; // Required for charts
+import { BaseChartDirective } from 'ng2-charts';
 import { UruguayDataService } from '../../services/uruguay-data.service';
 import { Country, Indicator, IndicatorValue, CountryEconomicProfile, EconomicProfileData } from '../../models/uruguay-data.models';
 import { switchMap, tap, catchError, of, forkJoin, Observable, map } from 'rxjs';
@@ -8,10 +8,8 @@ import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-uruguay-dashboard-page',
-  // Imports array for standalone component, but this component is part of UruguayDashboardModule
-  // If it were standalone, it would be:
-  // standalone: true,
-  // imports: [CommonModule, NgChartsModule],
+  standalone: true,
+  imports: [CommonModule, BaseChartDirective],
   templateUrl: './uruguay-dashboard-page.component.html',
   styleUrls: ['./uruguay-dashboard-page.component.css']
 })
