@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Added CommonModule
-import { NgChartsModule } from 'ng2-charts'; // Added NgChartsModule
+// import { NgChartsModule } from 'ng2-charts'; // Commented out or removed
+import { ChartsModule } from 'ng2-charts'; // Added ChartsModule
 import { EconomicProfileService } from '../../core/services/economic-profile.service';
 import { CountryEconomicProfile, EconomicData, DataPoint, StockMarketData, RealEstateData } from '../../core/models/economic-profile.model';
 import { ChartConfiguration, ChartOptions, ChartType, TooltipItem } from 'chart.js';
@@ -11,7 +12,7 @@ import { ChartConfiguration, ChartOptions, ChartType, TooltipItem } from 'chart.
 @Component({
   selector: 'app-country-economic-profile',
   standalone: true, // Added standalone: true
-  imports: [CommonModule, NgChartsModule], // Added imports array
+  imports: [CommonModule, ChartsModule], // Changed NgChartsModule to ChartsModule
   templateUrl: './country-economic-profile.component.html',
   styleUrls: ['./country-economic-profile.component.css']
 })
