@@ -72,6 +72,11 @@ export const routes: Routes = [
     path: 'user/profile',
     component: UserProfileComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'economic-profile',
+    loadChildren: () => import('./features/economic-profile/economic-profile.module').then(m => m.EconomicProfileModule),
+    canActivate: [authGuard] // Assuming this section also requires authentication
   }
   // Catch-all or 404 route can be added here if needed
   // { path: '**', component: PageNotFoundComponent }
