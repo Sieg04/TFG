@@ -50,7 +50,7 @@ export class CountryEconomicProfileComponent implements OnInit {
       }
     }
   };
-  public stockMarketChartType: ChartType = 'line';
+  public stockMarketChartType: 'line' = 'line';
 
   // Real Estate Chart
   public realEstateChartData: ChartConfiguration<'line'>['data'] = { labels: [], datasets: [] };
@@ -85,7 +85,7 @@ export class CountryEconomicProfileComponent implements OnInit {
       }
     }
   };
-  public realEstateChartType: ChartType = 'line';
+  public realEstateChartType: 'line' = 'line';
 
   constructor(
     private route: ActivatedRoute,
